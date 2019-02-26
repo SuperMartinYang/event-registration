@@ -10,12 +10,17 @@ namespace event_registration
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public readonly IConfiguration configuration;
+        public Startup(IHostingEnvironment env)
         {
-            Configuration = configuration;
+            configuration = new ConfigurationBuilder()
+                .AddEnvironmentVariables()
+                .AddJsonFile(env.ContentRootPath + "/appsettings.json")
+                .AddJsonFile(env.ContentRootPath + "/appsettings.Development.json", true)
+                .Build();
         }
 
-        public IConfiguration Configuration { get; }
+        // public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -27,6 +32,15 @@ namespace event_registration
             {
                 configuration.RootPath = "ClientApp/build";
             });
+
+            // add dependency injections
+
+
+            // db context
+            services.AddDbContext<ERDbContext>(options => {
+                var connectionString = configuration.GetConnectionString("ERDbContext");
+                options.UseSqlServer(connectionString);
+            })
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

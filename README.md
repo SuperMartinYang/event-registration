@@ -21,18 +21,18 @@
     * category (varchar)
     * start_time (timestamp)
     * end_time (timestamp)
-    * seats (int)
+    * seat (int)
 
 * forms
     * id (int)
     * title (varchar)
-    * fields (json)
+    * fields_json (json)
     * create_time (timestamp)
 * participants
     * id (int)
     * event_id (int)
     * answers (json)
-    * priority
+    * priority (int)
 * emails
     * id (int)
     * title (varchar)
@@ -43,7 +43,12 @@
     * password (varchar)
     * email (varchar)
     * phone_no (varchar)
-
+* histories
+    * id (int)
+    * event_id (int)
+    * operator (varchar)
+    * action_time (timestamp)
+    * action (varchar)
 ## Design Front-end
 photos of front end
 * Layout (header and footer):
