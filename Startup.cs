@@ -34,7 +34,12 @@ namespace event_registration
             });
 
             // add dependency injections
-
+            services.AddScoped<IEmailRepository, EmailRepository>();
+            services.AddScoped<IEventRepository, EventRepository>();
+            services.AddScoped<IFormRepository, FormRepository>();
+            services.AddScoped<IHistoryRepository, HistoryRepository>();
+            services.AddScoped<IParticipantRepository, ParticipantRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
 
             // db context
             services.AddDbContext<ERDbContext>(options => {
