@@ -25,6 +25,8 @@ namespace event_registration.Models {
         [Required]
         [Timestamp]
         public byte[] create_time { get; set; } 
+
+        public ICollection<Event> Events { get; set; }
     }
 
     public class Field {

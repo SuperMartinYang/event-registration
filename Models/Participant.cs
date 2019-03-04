@@ -3,7 +3,9 @@ namespace event_registration.Models {
         [Required]
         public int id { get; set; }
         [Required]
+        [ForeignKey("Event")]
         public int event_id { get; set; }
+        public Event Event { get; set; }
         [Required]
         public string answers { get; set; }
         [Required]

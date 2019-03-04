@@ -10,5 +10,7 @@ namespace event_registration.Models {
         [DataType(DataType.EmailAddress)]
         public string email { get; set; }
         public string phone_no { get; set; }
+
+        public ICollection<Event> Events { get; set; }
     }    
 }
