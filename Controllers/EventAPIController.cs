@@ -1,3 +1,11 @@
+using System.Linq;
+using System.Net;
+using System.Threading.Tasks;
+using event_registration.Contracts;
+using event_registration.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+
 namespace event_registration.Controllers {
     public class EventAPIController {
         // get repository
@@ -25,19 +33,19 @@ namespace event_registration.Controllers {
         [Produces(typeof(Event))]
         public async Task<IActionResult> GetEvent([FromRoute] int id){
             if (!ModelState.isValid) return BadRequest(ModelState);
-            var event = await _repo.Find(id);
-            if (!event) return NotFound(id);
-            return Ok(event); 
+            var ev = await _repo.Find(id);
+            if (!ev) return NotFound(id);
+            return Ok(ev); 
         }
 
         [HttpPut("id")]
         [Produces(typeof(Event))]
-        public async Task<IActionResult> PutEvent([FromBody] Event event, [FromRoute] int id){
+        public async Task<IActionResult> PutEvent([FromBody] Event ev, [FromRoute] int id){
             if (!ModelState.isValid) return BadRequest(ModelState);
-            if (id != event.id) return BadRequest();
+            if (id != ev.id) return BadRequest();
             try {
-                await _repo.Update(event);
-                return Ok(event);
+                await _repo.Update(ev);
+                return Ok(ev);
             } catch(DbUpdateConcurrencyException) {
                 if (!await EventExists(id))
                     return NotFound()
@@ -47,11 +55,11 @@ namespace event_registration.Controllers {
 
         [HttpPost("id")]
         [Produces(typeof(Event))]
-        public async Task<IActionResult> PostEvent([FromBody] Event event){
+        public async Task<IActionResult> PostEvent([FromBody] Event ev){
             if (!ModelState.isValid) return BadRequest(ModelState);
             try {
-                _repo.Add(event);
-                return Ok(event);
+                await _repo.Add(ev);
+                return Ok(ev);
             } catch (DbUpdateConcurrencyException){
                 throw;
             }
@@ -62,8 +70,8 @@ namespace event_registration.Controllers {
         public async Task<IActionResult> DeleteEvent([FromRoute] int id){
             if (!ModelState.isValid) return BadRequest(ModelState);
             if (!await EventExists(id)) return BadRequest();
-            var event = _repo.Remove(id);
-            return Ok(event);
+            var ev = _repo.Remove(id);
+            return Ok(ev);
         }
     }
 }

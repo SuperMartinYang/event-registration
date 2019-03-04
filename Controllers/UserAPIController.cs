@@ -1,3 +1,11 @@
+using System.Linq;
+using System.Net;
+using System.Threading.Tasks;
+using event_registration.Contracts;
+using event_registration.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+
 namespace event_registration.Controllers {
     public class UserAPIController {
         // get repository
