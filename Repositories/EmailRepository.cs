@@ -1,3 +1,7 @@
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using event_registration.Models;
+
 namespace event_registration.Repositories {
     public class EmailRepository {
         private readonly ERDbContext _context;
@@ -11,7 +15,7 @@ namespace event_registration.Repositories {
             return email;
         }
 
-        public IEumerable<Email> GetAll(){
+        public IEnumerable<Email> GetAll(){
             return _context.Emails;
         }
         public async Task<Email> Find(int id){

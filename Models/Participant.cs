@@ -1,5 +1,8 @@
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace event_registration.Models {
-    public class Paticipant {
+    public class Participant {
         [Required]
         public int id { get; set; }
         [Required]

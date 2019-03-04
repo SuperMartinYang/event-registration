@@ -1,3 +1,16 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+
+// my namespaces
+using Microsoft.EntityFrameworkCore;
+using System.Net;
+using event_registration.Contracts;
+using event_registration.Models;
+
 namespace event_registration.Controllers {
     [Route("api/[controller]")]
     public class EmailAPIController {
@@ -41,7 +54,7 @@ namespace event_registration.Controllers {
                 return Ok(email);
             } catch(DbUpdateConcurrencyException) {
                 if (!await EmailExists(id))
-                    return NotFound()
+                    return NotFound();
                 else throw;
             }
         }

@@ -62,7 +62,7 @@ photos of front end
 
 * View My Event (Calender like, support search):
 
-    * Edit Event Paticipants (view the answers, can delete)
+    * Edit Event Participants (view the answers, can delete)
     * View Histories (list of histories toward this event):
 
 * Create Email (several fix fields):

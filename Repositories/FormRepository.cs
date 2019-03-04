@@ -1,3 +1,7 @@
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using event_registration.Models;
+
 namespace form_registration.Repositories {
     public class FormRepository {
         private readonly ERDbContext _context;
@@ -11,7 +15,7 @@ namespace form_registration.Repositories {
             return form;
         }
 
-        public IEumerable<Form> GetAll(){
+        public IEnumerable<Form> GetAll(){
             return _context.Forms;
         }
         public async Task<Form> Find(int id){

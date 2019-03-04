@@ -1,3 +1,6 @@
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace event_registration.Models {
     public class History {
         [Required]
@@ -7,7 +10,7 @@ namespace event_registration.Models {
         public int event_id { get; set; }
         public Event Event { get; set; }
         [Required]
-        public string operator { get; set; }
+        public string oper { get; set; }
         [Required]
         [Timestamp]
         public byte[] action_time { get; set; }

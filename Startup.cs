@@ -1,3 +1,5 @@
+using event_registration.Contracts;
+using event_registration.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;

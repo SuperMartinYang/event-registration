@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+
 namespace event_registration.Models {
     public class ERDbContext : DbContext {
         // init
@@ -5,11 +7,11 @@ namespace event_registration.Models {
             Database.EnsureCreated();
         }
 
-        public DbSet<Event> Events { get; set; };
-        public DbSet<Paticipant> Paticipants { get; set; };
-        public DbSet<Form> Forms { get; set; };
-        public DbSet<User> Users { get; set; };
-        public DbSet<Email> Emails { get; set; };
-        public DbSet<History> Histories { get; set; };
+        public DbSet<Event> Events { get; set; }
+        public DbSet<Participant> Participants { get; set; }
+        public DbSet<Form> Forms { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Email> Emails { get; set; }
+        public DbSet<History> Histories { get; set; }
     }
 }

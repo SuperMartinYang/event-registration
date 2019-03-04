@@ -1,3 +1,7 @@
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace event_registration.Models {
     public class Event {
         // properties (columns)

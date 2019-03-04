@@ -1,3 +1,7 @@
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using event_registration.Models;
+
 namespace user_registration.Repositories {
     public class UserRepository {
         private readonly ERDbContext _context;
@@ -11,7 +15,7 @@ namespace user_registration.Repositories {
             return user;
         }
 
-        public IEumerable<User> GetAll(){
+        public IEnumerable<User> GetAll(){
             return _context.Users;
         }
         public async Task<User> Find(int id){
